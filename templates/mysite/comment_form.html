@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Comment</title>
+    <!-- CSS 파일을 포함시키려면 여기에 링크 추가 -->
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h2>Update Comment</h2>
+    <section class="mb-5">
+        <div class="card bg-light">
+            <div class="card-body">
+                <form method="post" action="{% url 'comment_update' comment.id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</body>
+</html>
