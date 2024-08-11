@@ -6,7 +6,21 @@
     {% for content in content_list %}
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-md-7">
-            <img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="{{ content.title }}" />
+            {% if content.main_image %}
+                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ content.main_image.url }}"
+                    alt="main_image" />
+                {% else %}
+                {% if forloop.first %}
+                    <!-- 첫 번째 상품에 사용할 이미지 -->
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="http://marondal.com/material/images/dulumary/web/front/bootstrap/test05_best1.jpg" alt="첫 번째 상품 이미지" />
+                {% elif forloop.counter == 2 %}
+                    <!-- 두 번째 상품에 사용할 이미지 -->
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="http://marondal.com/material/images/dulumary/web/front/bootstrap/test05_best2.jpg" alt="두 번째 상품 이미지" />
+                {% else %}
+                    <!-- 그 외 상품에 사용할 기본 이미지 -->
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="https://www.google.co.kr/imgres?q=%EB%B0%95%EC%8A%A4%20%EC%95%88%EC%97%90%20%EB%AC%BC%EC%9D%8C%ED%91%9C&imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-clipart%2F20231023%2Foriginal%2Fpngtree-mystery-box-with-question-mark-3d-illustration-png-image_13399212.png&imgrefurl=https%3A%2F%2Fkor.pngtree.com%2Ffreepng%2Fmystery-box-with-question-mark-3d-illustration_13399212.html&docid=JzbuXcWa2mnXmM&tbnid=onn0f1VZEgcQWM&vet=12ahUKEwj5kffJpu2HAxVllK8BHVOaNVQQM3oECHMQAA..i&w=1200&h=1200&hcb=2&ved=2ahUKEwj5kffJpu2HAxVllK8BHVOaNVQQM3oECHMQAA" alt="기본 이미지" />
+                {% endif %}
+            {% endif %}
         </div>
         <div class="col-md-5">
             <h2 class="font-weight-light">{{ content.title }}</h2>

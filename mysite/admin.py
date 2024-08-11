@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import MainContent, Comment
 
 class MainContentAdmin(admin.ModelAdmin):
-    list_display = ['title', 'content', 'pub_date']
+    list_display = ('title', 'pub_date', 'main_image')
     search_fields = ['title']
 
 class CommentAdmin(admin.ModelAdmin):
